@@ -26,7 +26,7 @@
 	});
 
 	$.silver = function(selector, options) {
-		options = $.extend({}, $.silver.defaults, {selector: selector || 'body'}, options);
+		options = $.extend({}, $.silver.defaults, {selector: selector || $.silver.defaults.selector}, options);
 
 		Commands = $.extend({}, Commands, {}, options.commands);
 
@@ -48,6 +48,7 @@
 		return silver;
 	}	
 	$.silver.defaults = {
+		selector: 'body',
 		hotkey: $.browser.opera ? 'shift+space' : 'ctrl+shift+space', // :|
 		maxResults: 10,
 		maxLastItems: 5,

@@ -1,8 +1,9 @@
-- add copyright * Done
 - create examples
 - screenshots
-- create more options * Done
 - test in IE (haha)
 - should I filter out commands?
-- add to google code
 - create min version
+- create greasemonkey script
+- add to google code * Done
+- add copyright * Done
+- create more options * Done

@@ -21,8 +21,7 @@
 				else
 					silver.focusInput();
 		});
-		
-		//silver.show();
+
 		return silver;
 	}	
 	$.silver.defaults = {

@@ -1,4 +1,4 @@
-- add copyright
+- add copyright * Done
 - create examples
 - create more options
 - test in IE (haha)

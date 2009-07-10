@@ -7,7 +7,7 @@ div.jquery_silver {
 div.jquery_silver input, div.jquery_silver li {
 	font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
 }
-div.jquery_silver > input {
+div.jquery_silver input {
 	font-size: 2em;
 	width: 98%;
 	border: 2px solid #e0e0e0;
@@ -20,7 +20,7 @@ div.jquery_silver > input {
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 }
-div.jquery_silver > ul {
+div.jquery_silver ul {
 	background: white;
 	border: 2px solid #e0e0e0;
 	border-top-style: none;
@@ -36,7 +36,7 @@ div.jquery_silver > ul {
 	border-bottom-right-radius: 8px;
 }
 
-#caelumsilver_div > ul > li:last-child {
+#caelumsilver_div ul li:last-child {
 	-moz-border-radius-bottomleft: 6px;
 	-moz-border-radius-bottomright: 6px;
 	-webkit-border-radius-bottom-left: 6px;
@@ -45,7 +45,7 @@ div.jquery_silver > ul {
 	border-radius-bottom-right: 6px;
 }
 
-div.jquery_silver > ul > li {
+div.jquery_silver ul li {
 	list-style: none;
 	padding: 3px 3px;
 	border-bottom: 1px solid #e0e0e0;
@@ -53,26 +53,26 @@ div.jquery_silver > ul > li {
 	margin: 0;
 }
 
-div.jquery_silver > ul > li:last-child {
+div.jquery_silver ul li:last-child {
 	border-bottom-style: none;
 }
-div.jquery_silver > ul > li > a {
+div.jquery_silver ul li a {
 	text-decoration: none;
 	font-size: 1.3em;
 	color: #a0a0a0;
 }
-div.jquery_silver > ul > li > a b {
+div.jquery_silver ul li a b {
 	text-decoration: underline;
 	font-weight: normal;
 	font-size: 1em;
 }
-div.jquery_silver > ul > li.selected, div.jquery_silver > ul > li:hover {
+div.jquery_silver ul li.selected, div.jquery_silver ul li:hover {
 	background: #e0e0e0;
 }
-div.jquery_silver > ul > li.selected a, div.jquery_silver > ul > li:hover a {
+div.jquery_silver ul li.selected a, div.jquery_silver ul li:hover a {
 	color: white;
 }
 
-div.jquery_silver > input:focus { /* hideous safari outline effect */
+div.jquery_silver input:focus { /* hideous safari outline effect */
 	outline: 0;
 }

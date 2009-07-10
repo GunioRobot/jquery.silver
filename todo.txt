@@ -1,4 +1,3 @@
-- create examples
 - create demo
 - screenshots
 - test in IE (haha)

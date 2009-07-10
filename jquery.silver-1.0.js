@@ -123,7 +123,7 @@
 		return silver;
 	}
 	
-	function Menu(ul, resetCallback) {
+	function Menu(ul) {
 		var currentIndex = -1;
 		var currentSelected;
 		var links = [];

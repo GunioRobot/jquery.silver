@@ -25,7 +25,7 @@
 		return silver;
 	}	
 	$.silver.defaults = {
-		hotkey: 'ctrl+shift+space',
+		hotkey: 'shift+space',
 		maxResults: 10,
 		maxLastItems: 5
 	}
@@ -142,7 +142,7 @@
 		}
 
 		function underLineCriteria(text, criteria) {
-			criteria = criteria.toLowerCase().split('');
+			criteria = $.trim(criteria.toLowerCase()).split('');
 			var lowerText = text.toLowerCase();
 			var lastIndex = 0;
 			for(var i in criteria) {

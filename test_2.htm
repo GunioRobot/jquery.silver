@@ -11,8 +11,8 @@
 		<script type="text/javascript" charset="utf-8" src="jquery.silver-1.0.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			$(function() {
-				$.silver('body', {
-					//hotkey: function(e) {return e.charCode == 32},
+				$().silver({
+					//hotkey: 'ctrl+c',
 					maxResults: 3,
 					maxLastItems: 5,
 					hideFunction: function(el) { el.fadeOut(250); },
@@ -30,7 +30,7 @@
 							}
 						}
 					}
-				});
+				}).toggle();
 				
 				//$('#menu').silver();
 			});

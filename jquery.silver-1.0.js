@@ -7,6 +7,14 @@
  *
  * Works with jQuery 1.3.2
  * Tested with Opera 9.8, Firefox 3.0, Safari 3.2.3 on MacOs Leopard
+ *
+ * Usage:
+ * - import jquery-1.3.2.js
+ * - optionally import jquery.cookie.js to enable last opened items
+ * - import jquery.silver-1.0.js
+ * - import jquery.silver.css or custom css
+ * - include $().silver() or $('#menu').silver() to initialize
+ * - hit ctrl+shift+space (or shift+space in opera) to show the dialog
  */
 
 (function($) {
@@ -41,7 +49,10 @@
 	$.silver.defaults = {
 		hotkey: $.browser.opera ? 'shift+space' : 'ctrl+shift+space', // :|
 		maxResults: 10,
-		maxLastItems: 5
+		maxLastItems: 5,
+		commands: {},
+		hideFunction: function(el) { el.hide(); },
+		showFunction: function(el) { el.fadeIn(250); }
 	}
 
 	function Silver(options) {
@@ -60,12 +71,11 @@
 		var silver = {
 			toggle: function() {
 				visible ? this.hide() : this.show();
-				visible = !visible;
 				div.center();
 			},
 			hide: function() {
 				visible = false;
-				options.hideFunction ? options.hideFunction(div) : div.hide();
+				options.hideFunction(div);
 				menu.reset();
 			},
 			show: function() {
@@ -73,7 +83,7 @@
 				$.silver_lastItems.get();
 
 				input.val('');
-				options.showFunction ? options.showFunction(div) : div.fadeIn(250);
+				options.showFunction(div);
 				this.focusInput();
 			},
 			focusInput: function() {

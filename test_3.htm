@@ -11,7 +11,7 @@
 		<script type="text/javascript" charset="utf-8" src="jquery.silver-1.0.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			$(function() {
-				$.silver('#menu', {
+				$().silver({
 					//hotkey: 'ctrl+c',
 					maxResults: 3,
 					maxLastItems: 5,
@@ -30,7 +30,7 @@
 							}
 						}
 					}
-				});
+				}).toggle();
 				
 				//$('#menu').silver();
 			});

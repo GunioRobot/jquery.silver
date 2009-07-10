@@ -1,3 +1,4 @@
+- document add arbitrary last items
 - support <button
 - should I filter out commands?
 - create min version

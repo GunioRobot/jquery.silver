@@ -25,7 +25,7 @@
 		return silver;
 	}	
 	$.silver.defaults = {
-		hotkey: 'shift+space',
+		hotkey: 'ctrl+shift+a',
 		maxResults: 10,
 		maxLastItems: 5
 	}

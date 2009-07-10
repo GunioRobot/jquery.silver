@@ -15,10 +15,10 @@ div.jquery_silver > input {
 	margin: 0;
 	-moz-border-radius-topleft: 8px;
 	-moz-border-radius-topright: 8px;
-	-webkit-border-radius-topleft: 8px;
-	-webkit-border-radius-topright: 8px;
-	border-radius-topleft: 8px;
-	border-radius-topright: 8px;
+	-webkit-border-radius-top-left: 8px;
+	-webkit-border-radius-top-right: 8px;
+	border-radius-top-left: 8px;
+	border-radius-top-right: 8px;
 }
 div.jquery_silver > ul {
 	background: white;
@@ -30,19 +30,19 @@ div.jquery_silver > ul {
 	width: 100%;
 	-moz-border-radius-bottomleft: 8px;
 	-moz-border-radius-bottomright: 8px;
-	-webkit-border-radius-bottomleft: 8px;
-	-webkit-border-radius-bottomright: 8px;
-	border-radius-bottomleft: 8px;
-	border-radius-bottomright: 8px;
+	-webkit-border-radius-bottom-left: 8px;
+	-webkit-border-radius-bottom-right: 8px;
+	border-radius-bottom-left: 8px;
+	border-radius-bottom-right: 8px;
 }
 
 #caelumsilver_div > ul > li:last-child {
 	-moz-border-radius-bottomleft: 6px;
 	-moz-border-radius-bottomright: 6px;
-	-webkit-border-radius-bottomleft: 6px;
-	-webkit-border-radius-bottomright: 6px;
-	border-radius-bottomleft: 6px;
-	border-radius-bottomright: 6px;
+	-webkit-border-radius-bottom-left: 6px;
+	-webkit-border-radius-bottom-right: 6px;
+	border-radius-bottom-left: 6px;
+	border-radius-bottom-right: 6px;
 }
 
 div.jquery_silver > ul > li {

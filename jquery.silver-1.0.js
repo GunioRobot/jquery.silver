@@ -78,8 +78,9 @@
 			},
 			hide: function() {
 				visible = false;
-				menu.reset();
 				options.hideFunction(div);
+				menu.reset();
+				input.blur(); // safari. if I don't get the input out of focus it bugs out
 			},
 			show: function() {
 				visible = true;

@@ -1,4 +1,5 @@
 - create examples
+- create demo
 - screenshots
 - test in IE (haha)
 - should I filter out commands?

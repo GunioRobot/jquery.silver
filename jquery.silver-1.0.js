@@ -273,7 +273,7 @@
 			for(var i in criteria) {
 				index = text.indexOf(criteria[i], lastIndex + 1);
 				if(index < 0) return 0;
-				value += (len - index);
+				value += (1000 - index);
 				lastIndex = index;
 			}
 

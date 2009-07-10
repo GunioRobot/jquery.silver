@@ -13,7 +13,7 @@
 		var silver = new Silver(options);
 		
 		$(document)
-			.bind('keydown', options.hotkey, function() { silver.toggle(); })
+			.bind('keydown', options.hotkey, function(e) { silver.toggle(); e.preventDefault(); })
 			.click(function(e) {
 				// clicked outside jquery.silver
 				if($(e.target).parents('.jquery_silver').length == 0)
@@ -25,7 +25,7 @@
 		return silver;
 	}	
 	$.silver.defaults = {
-		hotkey: 'ctrl+shift+a',
+		hotkey: 'ctrl+shift+space',
 		maxResults: 10,
 		maxLastItems: 5
 	}
@@ -60,7 +60,7 @@
 
 				input.val('');
 				options.showFunction ? options.showFunction(div) : div.fadeIn(250);
-				input.focus();
+				this.focusInput();
 			},
 			focusInput: function() {
 				input.focus();
@@ -95,7 +95,7 @@
 				if(!menu.open(num)) {
 					silver.hide();
 				}
-				e.preventDefault();
+				//e.preventDefault();
 			}
 			else if(w >= 65 && w <= 256 || w == 8){
 				typed(e);

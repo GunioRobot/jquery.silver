@@ -1,8 +1,8 @@
-- create demo
-- screenshots
 - should I filter out commands?
 - create min version
 - create greasemonkey script
+- create demo * Done
+- screenshots * Pseudo-done. Doing the demo should be enough
 - test in IE (haha) * Done :P
 - add to google code * Done
 - add copyright * Done

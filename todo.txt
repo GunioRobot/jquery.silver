@@ -1,6 +1,7 @@
 - add copyright * Done
 - create examples
-- create more options
+- screenshots
+- create more options * Done
 - test in IE (haha)
 - should I filter out commands?
 - add to google code

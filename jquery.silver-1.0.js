@@ -53,7 +53,8 @@
 		maxLastItems: 5,
 		commands: {},
 		hideFunction: function(el) { el.hide(); },
-		showFunction: function(el) { el.fadeIn(250); }
+		showFunction: function(el) { el.fadeIn(250); },
+		rankFunction: null
 	}
 
 	function Silver(options) {
@@ -277,12 +278,14 @@
 
 			return value;
 		}
-
+		
+		var rankFunction = options.rankFunction || doRank;
 		var searcher = {
 			search: function(criteria) {
 				var ranked = [];
 				links.each(function(c, e){
-					var rank = doRank(e.value || e.innerHTML, criteria);
+					var text = e.value || e.innerHTML;
+					var rank = rankFunction(text, criteria);
 					if(rank > 0)
 						ranked.push({link: e, rank: rank});
 				});

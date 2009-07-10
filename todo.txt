@@ -1,9 +1,9 @@
 - create demo
 - screenshots
-- test in IE (haha)
 - should I filter out commands?
 - create min version
 - create greasemonkey script
+- test in IE (haha) * Done :P
 - add to google code * Done
 - add copyright * Done
 - create more options * Done

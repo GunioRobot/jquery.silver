@@ -6,7 +6,7 @@
  * http://www.gnu.org/licenses/lgpl-3.0.txt
  *
  * Works with jQuery 1.3.2
- * Tested with Opera 9.8, Firefox 3.0, Safari 3.2.3 on MacOs Leopard
+ * Tested with Opera 9.8, Firefox 3.0, Safari 3.2.3 on MacOs Leopard and IE 6 on Windows XP
  *
  * Usage:
  * - import jquery-1.3.2.js

@@ -76,8 +76,8 @@
 			},
 			hide: function() {
 				visible = false;
-				options.hideFunction(div);
 				menu.reset();
+				options.hideFunction(div);
 			},
 			show: function() {
 				visible = true;
@@ -209,10 +209,6 @@
 				}
 				return currentSelected;
 			},
-			addCommand: function(name, description, func) {
-				var li = $('<li>').html(name + ': ' + description);
-				ul.append(li);
-			},
 			showLinks: function(newLinks, criteria) {
 				this.reset();
 				if(!newLinks || newLinks.length == 0) return;
@@ -226,7 +222,7 @@
 					li.attr('originaltext', link.originalText);
 
 					if(link.tagName == 'INPUT')
-						li.originalEl = link;
+						li.originalEl = link; // stored to call it's function later at Menu.open
 					
 					ul.append(li);
 					links.push(li);
@@ -246,6 +242,10 @@
 						this.addCommand(i, c.description, c.func);
 					}
 				}
+			},
+			addCommand: function(name, description, func) {
+				var li = $('<li>').html(name + ': ' + description);
+				ul.append(li);
 			}
 		}
 	}

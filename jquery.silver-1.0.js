@@ -80,7 +80,8 @@
 				visible = false;
 				options.hideFunction(div);
 				menu.reset();
-				input.blur(); // safari. if I don't get the input out of focus it bugs out
+				if($.browser.safari)
+					input.blur(); // safari. if I don't get the input out of focus it bugs out
 			},
 			show: function() {
 				visible = true;
@@ -254,9 +255,10 @@
 	}
 	
 	function Searcher(options) {
-		var links = $(options.selector + ' a')
-						.add(options.selector + ' input[type="button"]')
-						.add(options.selector + ' input[type="submit"]');
+		var links = $(options.selector + ' a, '
+						+ options.selector + ' input[type="button"], '
+						+ options.selector + ' input[type="submit"], '
+						+ options.selector + ' button');
 
 		function doRank(text, criteria) {
 			if(criteria.toLowerCase() == criteria) // lower mode

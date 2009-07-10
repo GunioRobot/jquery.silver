@@ -13,7 +13,7 @@
  * - optionally import jquery.cookie.js to enable last opened items
  * - import jquery.silver-1.0.js
  * - import jquery.silver.css or custom css
- * - include $().silver() or $('#menu').silver() to initialize
+ * - include $().silver() or $('#menu').silver() at jquery startup to initialize
  * - hit ctrl+shift+space (or shift+space in opera) to show the dialog
  */
 

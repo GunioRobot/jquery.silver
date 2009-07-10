@@ -13,7 +13,10 @@
 		var silver = new Silver(options);
 		
 		$(document)
-			.bind('keydown', options.hotkey, function(e) { silver.toggle(); e.preventDefault(); })
+			.bind($.browser.opera ? 'keypress' : 'keydown', options.hotkey, function(e) {  // :|
+				silver.toggle();
+				e.preventDefault();
+			})
 			.click(function(e) {
 				// clicked outside jquery.silver
 				if($(e.target).parents('.jquery_silver').length == 0)
@@ -25,7 +28,7 @@
 		return silver;
 	}	
 	$.silver.defaults = {
-		hotkey: 'ctrl+shift+space',
+		hotkey: $.browser.opera ? 'shift+space' : 'ctrl+shift+space', // :|
 		maxResults: 10,
 		maxLastItems: 5
 	}
@@ -92,12 +95,11 @@
 			var w = e.charCode || e.which;
 			var num = parseInt(String.fromCharCode(w));
 			if(isNaN(num) == false) { // accessing by numbers
-				if(!menu.open(num)) {
-					silver.hide();
-				}
-				//e.preventDefault();
+				if(!menu.open(num))	silver.hide();
+				e.preventDefault();
 			}
-			else if(w >= 65 && w <= 256 || w == 8){
+			else if(w >= 65 && w <= 256 || w == 8
+					|| w == 58){ // :
 				typed(e);
 				prevent = false;
 			}
@@ -107,17 +109,14 @@
 		input.bind('keydown', 'up', menu.previous);
 		input.bind('keydown', 'esc', silver.hide);
 
-		input.keydown(function(e) { // using hotkeys to 'return' simply doesn't work
-			if(e.keyCode != 13) return;
+		input.bind('keydown', 'return', function() {
 			var val = input.val();
 			if(val.charAt(0) == ':') { // command
 				Commands.doCommand(val);
 				input.val('');
-				menu.reset();
-			} else {
-				if(!menu.open()) {
-					silver.hide();
-				}
+				silver.hide();
+			} else if(!menu.open()) {
+				silver.hide();
 			}
 		});
 

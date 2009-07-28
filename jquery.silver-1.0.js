@@ -67,7 +67,7 @@
 		var menu = new Menu(ul, options);
 		var searcher = new Searcher(options);
 
-		$.silver_lastItems = $.cookie ? new LastItems(menu, options) : {add: function(){}}; // no cookies, no lastitems
+		$.silver_lastItems = $.cookie ? new LastItems(menu, options) : {add: function(){}, get: function() {}}; // no cookies, no lastitems
 		
 		$('body').append(div);
 
@@ -194,7 +194,7 @@
 				if(num >= 0) {
 					currentIndex = num;
 					navigate();
-				} else if(!num || (currentIndex == -1 && links.length > 0)) { // when pressing enter
+				} else if(!num && currentIndex == -1 && links.length > 0) { // when pressing enter
 					currentIndex = 0;
 					navigate();
 				}

@@ -263,6 +263,9 @@
 						+ options.selector + ' input[type="button"], '
 						+ options.selector + ' input[type="submit"], '
 						+ options.selector + ' button');
+		links.map(function(c, e) {
+			e.label = e.firstChild && e.firstChild.alt || e.value || e.innerHTML;
+		})
 
 		function doRank(text, criteria) {
 			if(criteria.toLowerCase() == criteria) // lower mode
@@ -292,7 +295,7 @@
 			search: function(criteria) {
 				var ranked = [];
 				links.each(function(c, e){
-					var text = e.value || e.innerHTML;
+					var text = e.label;
 					var rank = rankFunction(text, criteria);
 					if(rank > 0)
 						ranked.push({link: e, rank: rank});
@@ -307,7 +310,7 @@
 					if(i == options.maxResults) break;
 					
 					link = ranked[i].link;
-					link.originalText = link.value || link.innerHTML;
+					link.originalText = link.label;
 					rankedLinks.push(link);
 				}
 				return rankedLinks;
@@ -362,7 +365,7 @@
 				if(i.indexOf(val) == 0) {
 					input.val(':' + i);
 					break;
-				}				
+				}
 			}
 		}
 	}

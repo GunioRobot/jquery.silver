@@ -1,5 +1,5 @@
-- js error when executing a command that doesn't exists
 - document add arbitrary last items
+- js error when executing a command that doesn't exists * Done
 - support <button * Done
 - should I filter out commands? * Pseudo-done. Added <tab> support for autocompletion
 - create min version * Done

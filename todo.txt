@@ -1,10 +1,10 @@
 - js error when executing a command that doesn't exists
-- support <a>s with <img>
 - document add arbitrary last items
-- support <button
-- should I filter out commands?
-- create min version
-- create greasemonkey script
+- support <button * Done
+- should I filter out commands? * Pseudo-done. Added <tab> support for autocompletion
+- create min version * Done
+- create greasemonkey script * Doesn't work properly on a multitude of sites
+- support <a>s with <img> * Done
 - create demo * Done
 - screenshots * Pseudo-done. Doing the demo should be enough
 - test in IE (haha) * Done :P

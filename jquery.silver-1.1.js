@@ -134,12 +134,12 @@
 		input.bind('keydown', 'down', menu.next);
 		input.bind('keydown', 'up', menu.previous);
 		input.bind('keydown', 'esc', silver.hide);
-		input.bind('keydown', 'tab', function(e) { 
+		input.bind($.browser.opera ? 'keypress' : 'keydown', 'tab', function(e) {  // :|
 			e.preventDefault();
 			Commands.autocomplete(input);
 		});
 
-		input.bind('keydown', 'return', function() {
+		input.bind('keypress', 'return', function() {
 			var val = input.val();
 			if(val.charAt(0) == ':') { // command
 				Commands.doCommand(val);
@@ -362,7 +362,7 @@
 		autocomplete: function(input) {
 			var val = input.val().substring(1); // removes ':'
 			for(i in this) {
-				if(i.indexOf(val) == 0) {
+				if(i.indexOf(val) == 0 && i != 'doCommand' && i != 'autocomplete') { // haha lazy
 					input.val(':' + i);
 					break;
 				}

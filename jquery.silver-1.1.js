@@ -363,7 +363,7 @@
 			var val = input.val().substring(1); // removes ':'
 			for(i in this) {
 				if(i.indexOf(val) == 0 && i != 'doCommand' && i != 'autocomplete') { // haha lazy
-					input.val(':' + i);
+					input.val(':' + i + ' ');
 					break;
 				}
 			}

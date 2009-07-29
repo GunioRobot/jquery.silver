@@ -134,6 +134,10 @@
 		input.bind('keydown', 'down', menu.next);
 		input.bind('keydown', 'up', menu.previous);
 		input.bind('keydown', 'esc', silver.hide);
+		input.bind('keydown', 'tab', function(e) { 
+			e.preventDefault();
+			Commands.autocomplete(input);
+		});
 
 		input.bind('keydown', 'return', function() {
 			var val = input.val();
@@ -351,6 +355,15 @@
 			command = val[0];
 			args    = val[1];
 			this[command].func(args);
+		},
+		autocomplete: function(input) {
+			var val = input.val().substring(1); // removes ':'
+			for(i in this) {
+				if(i.indexOf(val) == 0) {
+					input.val(':' + i);
+					break;
+				}				
+			}
 		}
 	}
 

@@ -357,7 +357,8 @@
 			val     = val.substring(1).split(' ');
 			command = val[0];
 			args    = val[1];
-			this[command].func(args);
+			if(this[command])
+				this[command].func(args);
 		},
 		autocomplete: function(input) {
 			var val = input.val().substring(1); // removes ':'

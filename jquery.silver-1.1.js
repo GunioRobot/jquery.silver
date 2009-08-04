@@ -55,7 +55,8 @@
 		commands: {},
 		hideFunction: function(el) { el.hide(); },
 		showFunction: function(el) { el.fadeIn(250); },
-		rankFunction: null
+		rankFunction: null,
+		openExternalLinksInNewWindows : false
 	}
 
 	function Silver(options) {
@@ -153,7 +154,7 @@
 		return silver;
 	}
 	
-	function Menu(ul) {
+	function Menu(ul, options) {
 		var currentIndex = -1;
 		var currentSelected;
 		var links = [];
@@ -170,6 +171,14 @@
 			currentSelected = selected;
 		}
 
+		function isExternal(url){
+			if (!url)
+				return false;
+			if (!url.match("^(http://|https://)"))
+				return false;
+			return $('<a href="' + url + '"/>').get(0).hostname != window.location.host;
+		}
+		
 		function underLineCriteria(text, criteria) {
 			criteria = $.trim(criteria.toLowerCase()).split('');
 			var lowerText = text.toLowerCase();
@@ -205,14 +214,28 @@
 
 				if(currentSelected) {
 					var urlOrFunc = currentSelected.url;
-					if(urlOrFunc.indexOf('http://') == 0 || urlOrFunc.indexOf('file://') == 0) {
+					if(isExternal(urlOrFunc)) {
 						$.silver_lastItems.add(currentSelected.attr('originaltext'), currentSelected.url.replace(/\n/g, '')); // don't store buttons on last actions
-						window.location = urlOrFunc;
+						if (options.openExternalLinksInNewWindows) {
+							window.open(urlOrFunc);
+						}
+						else {
+							window.location = urlOrFunc;
+						}
 					} else {
-						eval('function a(){'+urlOrFunc+'}'); // it's an button, call it's function
-						a.call(currentSelected.originalEl);
+						debugger;
+						if (urlOrFunc)
+						{
+							eval('function a(){'+urlOrFunc+'}'); // it's an button, call it's function
+							a.call(currentSelected.originalEl);
+							return false;
+						}
+						else
+						{
+							$(currentSelected.originalEl).click();
+							return false;
+						}
 						
-						return false;
 					}
 				}
 				return currentSelected;
@@ -222,16 +245,20 @@
 				if(!newLinks || newLinks.length == 0) return;
 
 				var li, link, text;
+				
 				for(var i in newLinks) {
 					link   = newLinks[i];
 					text   = i + '. ' + (criteria ? underLineCriteria(link.originalText, criteria) : link.originalText);
 					li     = $('<li>').html(text);
-					li.url = link.href || link.getAttribute('onclick');
+					li.url = link.href || (link.getAttribute ? link.getAttribute('onclick') : false);
 					li.attr('originaltext', link.originalText);
 
-					if(link.tagName == 'INPUT')
+					if(!li.url) {
 						li.originalEl = link; // stored to call it's function later at Menu.open
-					
+					}
+					else {
+						li.addClass( isExternal(li.url) ? "external" : "internal");
+					}
 					ul.append(li);
 					links.push(li);
 				}
@@ -266,7 +293,6 @@
 		links.map(function(c, e) {
 			e.label = e.firstChild && e.firstChild.alt || e.value || e.innerHTML;
 		})
-
 		function doRank(text, criteria) {
 			if(criteria.toLowerCase() == criteria) // lower mode
 				text = text.toLowerCase();
@@ -324,8 +350,7 @@
 		var cookie = 'jquery_silver_lastItems';
 
 		function load() {
-			eval('var items = [' + ($.cookie(cookie) || '') + ']');
-			return items;
+			return eval("[" + $.cookie(cookie) + "]");
 		}
 		function format(text, url) {
 			return '{originalText:"' + text + '",href:"' + url + '"}';

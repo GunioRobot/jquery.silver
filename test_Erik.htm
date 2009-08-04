@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<style type="text/css" media="screen">
+			@import url("jquery.silver.css");
+			.external{
+				background-color : magenta;
+			}
+		</style>
+		<script type="text/javascript" charset="utf-8" src="jquery-1.3.2.js"></script>
+		<script type="text/javascript" charset="utf-8" src="jquery.cookie.js"></script>
+		<script type="text/javascript" charset="utf-8" src="jquery.hotkeys-0.7.9-1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="jquery.silver-1.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(function() {
+				$('#menu').silver({
+					//hotkey: 'ctrl+c',
+					maxResults: 3,
+					maxLastItems: 5,
+					hideFunction: function(el) { el.fadeOut(250); },
+					commands: {
+						alert: {
+							description: 'just alerts',
+							func: function(s) {
+								alert(s);
+							}
+						},
+						refresh: {
+							description: 'refreshes the current window',
+							func: function() {
+								window.location.reload();
+							}
+						}
+					},
+					openExternalLinksInNewWindows : true
+				}).toggle();
+				$("#attachMe").click(function(){ alert('I was attached with an event!');});
+				//$('#menu').silver();
+			});
+		</script>
+	</head>
+	
+	<body>
+		<input/>
+		<ul id="menu">
+			<li><a href="test_1.htm">this is the first link</a></li>
+			<li><a href="test_2.htm">the second link this is</a></li>
+			<ul>
+				<li><a href="test_3.htm">Ooh Yeah Third Link</a></li>
+				<li><input type="button" value="buttons also show up" onclick="alert('clicked the button :D ' + this.value)"/></li>
+				<li><input type="submit" value="submits as well" onclick="alert('clicked the submit :D ' + this.value)"/></li>
+				<li><input type="submit" value="attached event handler" id="attachMe"/></li>
+			</ul>
+			<ul>
+				<li><a href="test_1.htm"><img src="save.png" alt="test with save image"></a></li>
+				<li><a href="test_1.htm"><img src="delete.png" alt="test with delete image"></a></li>
+				<li><a href="http://www.filipesabella.com/jquerysilver/demo.htm">Let's try an external link</a></li>
+			</ul>
+		</ul>
+		
+		<a href="test_1.htm">first random link</a><br/>
+		<a href="test_2.htm">Oh Lord Second Random Link</a>
+	</body>
+</html>

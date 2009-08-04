@@ -237,7 +237,7 @@
 				if(!newLinks || newLinks.length == 0) return;
 
 				var li, link, text;
-				
+
 				for(var i in newLinks) {
 					link   = newLinks[i];
 					text   = i + '. ' + (criteria ? underLineCriteria(link.originalText, criteria) : link.originalText);
@@ -343,7 +343,8 @@
 		var cookie = 'jquery_silver_lastItems';
 
 		function load() {
-			return eval("[" + $.cookie(cookie) + "]");
+			eval('var items = [' + ($.cookie(cookie) || '') + ']');
+			return items;
 		}
 		function format(text, url) {
 			return '{originalText:"' + text + '",href:"' + url + '"}';

@@ -214,28 +214,19 @@
 
 				if(currentSelected) {
 					var urlOrFunc = currentSelected.url;
+					if (!urlOrFunc){
+						$(currentSelected.originalEl).click();
+						return false;
+					}
 					if(isExternal(urlOrFunc)) {
-						$.silver_lastItems.add(currentSelected.attr('originaltext'), currentSelected.url.replace(/\n/g, '')); // don't store buttons on last actions
 						if (options.openExternalLinksInNewWindows) {
 							window.open(urlOrFunc);
-						}
-						else {
-							window.location = urlOrFunc;
-						}
-					} else {
-						if (urlOrFunc)
-						{
-							eval('function a(){'+urlOrFunc+'}'); // it's an button, call it's function
-							a.call(currentSelected.originalEl);
-							return false;
-						}
-						else
-						{
-							$(currentSelected.originalEl).click();
-							return false;
-						}
+							return;
+						}											
+					}	
+					$.silver_lastItems.add(currentSelected.attr('originaltext'), currentSelected.url.replace(/\n/g, '')); // don't store buttons on last actions
+					window.location = urlOrFunc;
 						
-					}
 				}
 				return currentSelected;
 			},
@@ -249,7 +240,8 @@
 					link   = newLinks[i];
 					text   = i + '. ' + (criteria ? underLineCriteria(link.originalText, criteria) : link.originalText);
 					li     = $('<li>').html(text);
-					li.url = link.href || (link.getAttribute ? link.getAttribute('onclick') : false);
+					li.url = link.href;
+					
 					li.attr('originaltext', link.originalText);
 
 					if(!li.url) {

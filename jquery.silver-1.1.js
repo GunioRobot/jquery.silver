@@ -282,6 +282,7 @@
 		var links = $(options.selector + ' a, '
 					+ options.selector + ' input[type="button"], '
 					+ options.selector + ' input[type="submit"], '
+					+ options.selector + ' input[type="image"], '
 					+ options.selector + ' button');
 		links.map(function(c, e) {
 			e.label = e.firstChild && e.firstChild.alt || e.value || e.innerHTML;

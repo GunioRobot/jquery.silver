@@ -218,13 +218,15 @@
 						$(currentSelected.originalEl).click();
 						return false;
 					}
+					
+					$.silver_lastItems.add(currentSelected.attr('originaltext'), currentSelected.url.replace(/\n/g, '')); // don't store buttons on last actions
+					
 					if(isExternal(urlOrFunc)) {
 						if (options.openExternalLinksInNewWindows) {
 							window.open(urlOrFunc);
 							return;
 						}											
 					}	
-					$.silver_lastItems.add(currentSelected.attr('originaltext'), currentSelected.url.replace(/\n/g, '')); // don't store buttons on last actions
 					window.location = urlOrFunc;
 						
 				}

@@ -223,7 +223,6 @@
 							window.location = urlOrFunc;
 						}
 					} else {
-						debugger;
 						if (urlOrFunc)
 						{
 							eval('function a(){'+urlOrFunc+'}'); // it's an button, call it's function
